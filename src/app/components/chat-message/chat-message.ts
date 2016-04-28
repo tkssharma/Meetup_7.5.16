@@ -1,7 +1,4 @@
-import {Component} from 'angular2/core';
-import {Http} from 'angular2/http';
-import {AngularFire} from 'angularfire2';
-import {Observable} from 'rxjs/Observable';
+import {Component, Input} from 'angular2/core';
 
 @Component({
     selector: 'chat-message',
@@ -12,10 +9,9 @@ import {Observable} from 'rxjs/Observable';
     pipes: []
 })
 export class ChatMessage {
-    messages: Observable<any[]>;
+    @Input() message: string;
     
-    constructor(private af: AngularFire) {
-        this.messages = af.database.list('/messages');
+    constructor() {
     }
 
     ngOnInit() {

@@ -16,11 +16,11 @@ export class ChatInput {
     messages: FirebaseListObservable<any[]>;
     
     constructor(private af: AngularFire) {
-        this.messages = af.database.list('/messages');
+        
     }
 
     ngOnInit() {
-        
+        this.messages = this.af.database.list('/messages');
     }
     
     send(newMessage:string) {

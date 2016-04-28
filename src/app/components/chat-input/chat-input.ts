@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {Http} from 'angular2/http';
-import {AngularFire} from 'angularfire2';
+import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
@@ -12,7 +12,8 @@ import {Observable} from 'rxjs/Observable';
     pipes: []
 })
 export class ChatInput {
-    messages: Observable<any[]>;
+
+    messages: FirebaseListObservable<any[]>;
     
     constructor(private af: AngularFire) {
         this.messages = af.database.list('/messages');
@@ -20,5 +21,9 @@ export class ChatInput {
 
     ngOnInit() {
         
+    }
+    
+    send(newMessage:string) {
+        this.messages.push(newMessage);
     }
 }

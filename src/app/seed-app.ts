@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {Router, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {ChatContainer} from './components/chat-container/chat-container';
+import {ChatWindow} from './components/chat-window/chat-window';
 
 @Component({
     selector: 'seed-app',
@@ -9,9 +9,10 @@ import {ChatContainer} from './components/chat-container/chat-container';
     pipes: [],
     directives: [ROUTER_DIRECTIVES],
     templateUrl: 'app/seed-app.html',
+    styleUrls: ['app/seed-app.css'],
 })
 @RouteConfig([
-    { path: '/chat', component: ChatContainer, name: 'ChatContainer', useAsDefault: true }
+    { path: '/chat', component: ChatWindow, name: 'ChatWindow', useAsDefault: true }
 ])
 export class SeedApp {
 

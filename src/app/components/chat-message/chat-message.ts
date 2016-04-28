@@ -1,4 +1,5 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, Inject} from 'angular2/core';
+import {FirebaseAuth} from 'angularfire2';
 
 @Component({
     selector: 'chat-message',
@@ -10,8 +11,10 @@ import {Component, Input} from 'angular2/core';
 })
 export class ChatMessage {
     @Input() message: string;
+    profile: any;
     
-    constructor() {
+    constructor(@Inject(FirebaseAuth) public auth: FirebaseAuth) {
+        this.profile = this.auth.getAuth().twitter;
     }
 
     ngOnInit() {

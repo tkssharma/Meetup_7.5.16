@@ -7,7 +7,7 @@
   opacity: 0;
 }
 .message.left .avatar {
-  background-color: #f5886e;
+    margin-top: 9px;
   float: left;
 }
 .message.left .text_wrapper {
@@ -22,7 +22,7 @@
   color: #c48843;
 }
 .message.right .avatar {
-  background-color: #fdbf68;
+    margin-top: 9px;
   float: right;
 }
 .message.right .text_wrapper {

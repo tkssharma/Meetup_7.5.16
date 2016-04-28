@@ -1,15 +1,19 @@
 <div class="bottom_wrapper clearfix">
-    <div *ngIf="auth | async" class="message_input_wrapper">
-        <input class="message_input" #newMessage placeholder="Type your message here..." />
+    <div *ngIf="auth | async">
+        <div class="message_input_wrapper">
+            <input class="message_input" #newMessage placeholder="Type your message here..." />
+        </div>
+        <div class="send_message" (click)="send(newMessage.value)">
+            <div class="icon"></div>
+            <div class="text">Send</div>
+        </div>
     </div>
-    <div *ngIf="auth | async" class="send_message" (click)="send(newMessage.value)">
-        <div class="icon"></div>
-        <div class="text">Send</div>
-    </div>
-    <div *ngIf="!(auth | async)" class="login" (click)="loginFacebook()">
-        <div class="text"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-    </div>
-    <div *ngIf="!(auth | async)" class="login" (click)="loginTwitter()">
-        <div class="text"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    <div *ngIf="!(auth | async)">
+        <div class="login" (click)="loginFacebook()">
+            <div class="text"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+        </div>
+        <div *ngIf="!(auth | async)" class="login" (click)="loginTwitter()">
+            <div class="text"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+        </div>
     </div>
 </div>

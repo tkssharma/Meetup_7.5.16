@@ -1,29 +1,28 @@
 import {Component, Inject} from 'angular2/core';
 import {Http} from 'angular2/http';
-import {AngularFire} from 'angularfire2';
-import {Observable} from 'rxjs/Observable';
 import {ChatInput} from '../chat-input/chat-input';
 import {ChatList} from '../chat-list/chat-list';
-import {FirebaseAuth} from 'angularfire2';
+import {ChatAuth} from '../chat-auth/chat-auth';
+import {FirebaseAuth, AuthProviders} from 'angularfire2';
 
 @Component({
     templateUrl: 'app/components/chat-window/chat-window.html',
     styleUrls: ['app/components/chat-window/chat-window.css'],
     providers: [],
-    directives: [ChatInput, ChatList],
+    directives: [ChatAuth, ChatInput, ChatList],
     pipes: []
 })
-export class ChatWindow {
-    messages: Observable<any[]>;
-    profile: any;
+export class ChatWindow {   
     
-    constructor(private af: AngularFire, @Inject(FirebaseAuth) public auth: FirebaseAuth) {
-        this.messages = af.database.list('/messages');
-        this.profile = this.auth.getAuth().twitter;
-        console.log(this.profile);
+    profile: any = {};
+    
+    constructor(private auth: FirebaseAuth) {
+        if(this.auth.getAuth() !== null) {
+            this.profile = this.auth.getAuth().twitter;
+        }
     }
 
     ngOnInit() {
-        
+       
     }
 }

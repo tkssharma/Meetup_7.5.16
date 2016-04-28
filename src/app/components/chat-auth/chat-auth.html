@@ -1,7 +1,13 @@
-<h3>Chat List Component</h3>
-
-<ul *ngFor="#message of messages | async">
-    <li class="text">
-        {{message.text}}
-    </li>
-</ul>
+<div *ngIf="!(auth | async)">
+    <div class="round_button" (click)="loginFacebook()">
+        <div class="text"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+    </div>
+    <div *ngIf="!(auth | async)" class="round_button" (click)="loginTwitter()">
+        <div class="text"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+    </div>
+</div>
+<div *ngIf="auth | async">
+    <div class="round_button" (click)="logout()">
+        <div class="text"><i class="fa fa-sign-out" aria-hidden="true"></i></div>
+    </div>
+</div>

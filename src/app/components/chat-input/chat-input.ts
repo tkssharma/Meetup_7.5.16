@@ -15,30 +15,16 @@ import {FirebaseAuth, AuthProviders} from 'angularfire2';
 export class ChatInput {
 
     messages: FirebaseListObservable<any[]>;
-    profile: any;
+    profile: any = {};
 
     constructor(private af: AngularFire, private auth: FirebaseAuth) {
-        this.profile = this.auth.getAuth().twitter;
+        if(this.auth.getAuth() !== null) {
+            this.profile = this.auth.getAuth().twitter;
+        }
     }
 
     ngOnInit() {
         this.messages = this.af.database.list('/messages');
-    }
-
-    loginFacebook(provider) {
-        this.auth.login({
-            provider: AuthProviders.Facebook
-        });
-    }
-
-    loginTwitter(provider) {
-        this.auth.login({
-            provider: AuthProviders.Twitter
-        });
-    }
-    
-    logout(provider) {
-        this.auth.logout();
     }
 
     send(newMessage: string) {
@@ -47,6 +33,7 @@ export class ChatInput {
             displayName: this.profile.displayName,
             username: this.profile.username,
             image: this.profile.profileImageURL,
+            id: this.profile.id
         }
         this.messages.push(message);
     }

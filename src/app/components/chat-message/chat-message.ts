@@ -11,16 +11,18 @@ import {NgClass} from 'angular2/common';
     pipes: []
 })
 export class ChatMessage {
-    @Input() message: string;
-    profile: any;
+    @Input() message: any;
+    profile: any = {};
     isYou: boolean = false;
 
     constructor( @Inject(FirebaseAuth) public auth: FirebaseAuth) {
-        this.profile = this.auth.getAuth().twitter;
+        if(this.auth.getAuth() !== null) {
+            this.profile = this.auth.getAuth().twitter;
+        }
     }
 
     ngOnInit() {
-        if (this.message.username === this.profile.username) {
+        if (this.message.id === this.profile.id) {
             this.isYou = true;
         } else {
             this.isYou = false;

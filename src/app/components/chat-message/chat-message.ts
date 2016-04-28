@@ -1,5 +1,6 @@
 import {Component, Input, Inject} from 'angular2/core';
 import {FirebaseAuth} from 'angularfire2';
+import {NgClass} from 'angular2/common';
 
 @Component({
     selector: 'chat-message',
@@ -12,12 +13,18 @@ import {FirebaseAuth} from 'angularfire2';
 export class ChatMessage {
     @Input() message: string;
     profile: any;
-    
-    constructor(@Inject(FirebaseAuth) public auth: FirebaseAuth) {
+    isYou: boolean = false;
+
+    constructor( @Inject(FirebaseAuth) public auth: FirebaseAuth) {
         this.profile = this.auth.getAuth().twitter;
     }
 
     ngOnInit() {
-        
+        if (this.message.username === this.profile.username) {
+            this.isYou = true;
+        } else {
+            this.isYou = false;
+        }
     }
+
 }

@@ -36,11 +36,16 @@ export class ChatInput {
             provider: AuthProviders.Twitter
         });
     }
+    
+    logout(provider) {
+        this.auth.logout();
+    }
 
     send(newMessage: string) {
         let message = {
             text: newMessage,
-            user: this.profile.displayName,
+            displayName: this.profile.displayName,
+            username: this.profile.username,
             image: this.profile.profileImageURL,
         }
         this.messages.push(message);

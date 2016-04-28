@@ -2,7 +2,7 @@
   position: relative;
   list-style: none;
   padding: 20px 10px 0 10px;
-  margin: 0;
+  margin-top: -20px;
   height: 347px;
-  overflow: scroll;
+  overflow-y: scroll;
 }

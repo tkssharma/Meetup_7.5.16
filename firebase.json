@@ -1,0 +1,9 @@
+{
+  "firebase": "meetup07052016",
+  "public": "src",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

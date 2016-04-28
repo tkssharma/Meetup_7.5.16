@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   background-color: #fff;
-  padding: 18px 20px;
+  padding: 20px 20px;
   position: absolute;
   bottom: 0;
 }
@@ -42,6 +42,30 @@
   background-color: #fff;
 }
 .bottom_wrapper .send_message .text {
+  font-size: 18px;
+  font-weight: 300;
+  display: inline-block;
+  line-height: 48px;
+}
+
+.bottom_wrapper .login {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #a3d063;
+  border: 2px solid #a3d063;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  text-align: center;
+  float: right;
+}
+.bottom_wrapper .login:hover {
+  color: #a3d063;
+  background-color: #fff;
+}
+.bottom_wrapper .login .text {
   font-size: 18px;
   font-weight: 300;
   display: inline-block;

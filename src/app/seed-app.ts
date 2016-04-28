@@ -8,8 +8,7 @@ import {ChatWindow} from './components/chat-window/chat-window';
     providers: [],
     pipes: [],
     directives: [ROUTER_DIRECTIVES],
-    templateUrl: 'app/seed-app.html',
-    styleUrls: ['app/seed-app.css'],
+    templateUrl: 'app/seed-app.html'
 })
 @RouteConfig([
     { path: '/chat', component: ChatWindow, name: 'ChatWindow', useAsDefault: true }

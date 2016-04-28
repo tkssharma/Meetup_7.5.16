@@ -3,13 +3,15 @@ import {bootstrap} from 'angular2/platform/browser';
 import {provide} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {ROUTER_PROVIDERS} from 'angular2/router';
+import {FIREBASE_PROVIDERS, defaultFirebase, AngularFire} from 'angularfire2';
 
 import {SeedApp} from './app/seed-app';
 
 
 bootstrap(SeedApp, [
-  HTTP_PROVIDERS,
-  ROUTER_PROVIDERS,
-  provide(LocationStrategy, {useClass: HashLocationStrategy})
-])
-.catch(err => console.error(err));
+    FIREBASE_PROVIDERS,
+    defaultFirebase('https://meetup07052016.firebaseio.com'),
+    HTTP_PROVIDERS,
+    ROUTER_PROVIDERS,
+    provide(LocationStrategy, { useClass: HashLocationStrategy })
+]).catch(err => console.error(err));

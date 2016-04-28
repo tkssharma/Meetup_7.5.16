@@ -1,0 +1,7 @@
+<h3>Chat List Component</h3>
+
+<ul *ngFor="#message of messages | async">
+    <li class="text">
+        {{message.text}}
+    </li>
+</ul>

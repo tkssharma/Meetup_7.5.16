@@ -26,7 +26,8 @@ export class ChatList implements AfterViewChecked {
 
     scrollToBottom(): void {
         try {
-            this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+            this.myScrollContainer.nativeElement.scrollTop
+                 = this.myScrollContainer.nativeElement.scrollHeight;
         } catch (err) { }
     }
 }

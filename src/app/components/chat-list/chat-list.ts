@@ -4,7 +4,7 @@ import {ChatMessage} from '../chat-message/chat-message';
 
 @Component({
     selector: 'chat-list',
-    templateUrl: `
+    template: `
     <ul #scrollMe class="messages">
         <chat-message *ngFor="#message of messages | async" [message]="message"></chat-message>
     </ul> 

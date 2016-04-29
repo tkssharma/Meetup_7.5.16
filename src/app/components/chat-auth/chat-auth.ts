@@ -32,3 +32,9 @@ export class ChatAuth {
         this.auth.logout();
     }
 }
+
+
+
+
+
+

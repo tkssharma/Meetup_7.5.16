@@ -4,10 +4,14 @@ import {NgClass} from 'angular2/common';
 
 @Component({
     selector: 'chat-message',
-    templateUrl: 'app/components/chat-message/chat-message.html',
-    providers: [],
-    directives: [],
-    pipes: []
+    template: `
+    <li [ngClass]="{right: isYou, left: !isYou}" class="message appeared">
+        <div class="avatar"><img src="{{message.image}}" class="img-responsive img-circle avatar" alt="Image"></div>
+        <div class="text_wrapper">
+            <div class="text">{{message.text}}</div>
+        </div>
+    </li>
+    `
 })
 export class ChatMessage implements OnInit {
     isYou: boolean = false;
@@ -15,7 +19,7 @@ export class ChatMessage implements OnInit {
     
     @Input() message: any;
     
-    constructor(public auth: FirebaseAuth) {
+    constructor(private auth: FirebaseAuth) {
         if(this.auth.getAuth() !== null) {
             this.profile = this.auth.getAuth().twitter;
         }
@@ -30,3 +34,7 @@ export class ChatMessage implements OnInit {
     }
     
 }
+
+
+
+

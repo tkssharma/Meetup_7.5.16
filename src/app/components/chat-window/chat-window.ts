@@ -1,23 +1,18 @@
 import {Component} from 'angular2/core';
 import {FirebaseAuth} from 'angularfire2';
-import {ChatAuth} from '../chat-auth/chat-auth';
+import {ChatTopMenu} from '../chat-topmenu/chat-topmenu';
 import {ChatList} from '../chat-list/chat-list';
 import {ChatInput} from '../chat-input/chat-input';
 
 @Component({
     template: `
     <div class="chat_window">
-        <div class="top_menu">
-            <div class="buttons">
-                <chat-auth></chat-auth>
-            </div>
-            <div class="title">Simple Chat App</div>
-        </div>
+        <chat-topmenu></chat-topmenu>
         <chat-list></chat-list>
         <chat-input></chat-input>
     </div>
     `,
-    directives: [ChatList, ChatInput, ChatAuth]
+    directives: [ChatList, ChatInput, ChatTopMenu]
 })
 export class ChatWindow {   
     constructor(private auth: FirebaseAuth) {}

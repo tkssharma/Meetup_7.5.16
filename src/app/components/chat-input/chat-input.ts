@@ -3,7 +3,7 @@ import {FirebaseAuth, AngularFire, FirebaseListObservable} from 'angularfire2';
 
 @Component({
     selector: 'chat-input',
-    templateUrl: `
+    template: `
     <div class="bottom_wrapper clearfix">
         <div *ngIf="auth | async">
             <div class="message_input_wrapper">

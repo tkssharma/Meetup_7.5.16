@@ -6,6 +6,7 @@ import {ROUTER_PROVIDERS} from 'angular2/router';
 import {FIREBASE_PROVIDERS, defaultFirebase, AngularFire, firebaseAuthConfig, AuthProviders, AuthMethods} from 'angularfire2';
 
 import {SeedApp} from './app/seed-app';
+import * as AngularFire2 from 'angularfire2';
 
 
 bootstrap(SeedApp, [
@@ -14,10 +15,11 @@ bootstrap(SeedApp, [
     HTTP_PROVIDERS,
     ROUTER_PROVIDERS,
     firebaseAuthConfig({
-        provider: AuthProviders.Facebook,
+        provider: AuthProviders.Twitter,
         method: AuthMethods.Popup,
         remember: 'default',
         scope: ['email']
     }),
     provide(LocationStrategy, { useClass: HashLocationStrategy })
-]).catch(err => console.error(err));
+])
+    .catch(err => console.error(err));

@@ -1,28 +1,28 @@
 import {Component} from 'angular2/core';
-import {Http} from 'angular2/http';
-import {Observable} from 'rxjs/Observable';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {FirebaseAuth, AuthProviders} from 'angularfire2';
 
 @Component({
     selector: 'chat-auth',
-    templateUrl: 'app/components/chat-auth/chat-auth.html',
-    providers: [AuthProviders],
-    directives: [],
-    pipes: []
+    template: `
+    <div *ngIf="!(auth | async)">
+        <div *ngIf="!(auth | async)" class="round_button" (click)="loginTwitter()">
+            <div class="text"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+        </div>
+    </div>
+    <div *ngIf="auth | async">
+        <div class="round_button" (click)="logout()">
+            <div class="text"><i class="fa fa-sign-out" aria-hidden="true"></i></div>
+        </div>
+    </div>
+    `,
+    providers: [AuthProviders]
 })
 export class ChatAuth {
-
     profile: any = {};
     
-    constructor(private auth: FirebaseAuth) {
-    }
+    constructor(private auth: FirebaseAuth) {}
 
-    ngOnInit() {
-        
-    }
-    
-    loginTwitter(provider) {
+    loginTwitter() {
         this.auth.login({
             provider: AuthProviders.Twitter
         });

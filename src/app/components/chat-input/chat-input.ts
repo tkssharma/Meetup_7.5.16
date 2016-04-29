@@ -1,15 +1,24 @@
 import {Component} from 'angular2/core';
-import {FirebaseAuth, AuthProviders, AngularFire, FirebaseListObservable} from 'angularfire2';
+import {FirebaseAuth, AngularFire, FirebaseListObservable} from 'angularfire2';
 
 @Component({
     selector: 'chat-input',
-    templateUrl: 'app/components/chat-input/chat-input.html',
-    providers: [AuthProviders],
-    directives: [],
-    pipes: []
+    templateUrl: `
+    <div class="bottom_wrapper clearfix">
+        <div *ngIf="auth | async">
+            <div class="message_input_wrapper">
+                <input class="message_input" #newMessage placeholder="Type your message here..." />
+            </div>
+            <div class="send_message" (click)="send(newMessage)">
+                <div class="icon"></div>
+                <div class="text">Send</div>
+            </div>
+        </div>
+        <div *ngIf="!(auth | async)" class="title">Please login to join this chat</div>
+    </div>
+    `
 })
 export class ChatInput {
-    
     messages: FirebaseListObservable<any[]>;
     profile: any = {};
     
@@ -32,3 +41,7 @@ export class ChatInput {
         newMessage.value = null;
     }
 }
+
+
+
+

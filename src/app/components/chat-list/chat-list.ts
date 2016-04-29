@@ -1,17 +1,17 @@
-import {Component, OnInit, AfterViewChecked, ElementRef, ViewChild} from 'angular2/core';
-import {Http} from 'angular2/http';
-import {Observable} from 'rxjs/Observable';
+import {Component, AfterViewChecked, ElementRef, ViewChild} from 'angular2/core';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {ChatMessage} from '../chat-message/chat-message';
 
 @Component({
     selector: 'chat-list',
-    templateUrl: 'app/components/chat-list/chat-list.html',
-    providers: [],
-    directives: [ChatMessage],
-    pipes: []
+    templateUrl: `
+    <ul #scrollMe class="messages">
+        <chat-message *ngFor="#message of messages | async" [message]="message"></chat-message>
+    </ul> 
+    `,
+    directives: [ChatMessage]
 })
-export class ChatList implements OnInit, AfterViewChecked {
+export class ChatList implements AfterViewChecked {
 
     messages: FirebaseListObservable<any[]>;
     @ViewChild('scrollMe') private myScrollContainer: ElementRef;
@@ -19,8 +19,6 @@ export class ChatList implements OnInit, AfterViewChecked {
     constructor(private af: AngularFire) {
         this.messages = af.database.list('/messages');
     }
-
-    ngOnInit() { }
 
     ngAfterViewChecked() {
         this.scrollToBottom();
@@ -32,3 +30,6 @@ export class ChatList implements OnInit, AfterViewChecked {
         } catch (err) { }
     }
 }
+
+
+

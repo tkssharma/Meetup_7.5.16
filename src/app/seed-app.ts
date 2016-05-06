@@ -7,7 +7,7 @@ import {ChatWindow} from './components/chat-window/chat-window';
   providers: [],
   pipes: [],
   directives: [ROUTER_DIRECTIVES],
-  templateUrl: 'app/seed-app.html',
+  template: '<router-outlet></router-outlet>',
 })
 @RouteConfig([
   {

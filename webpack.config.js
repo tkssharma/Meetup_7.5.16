@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // Webpack Config
 var webpackConfig = {
@@ -15,6 +16,10 @@ var webpackConfig = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills'], minChunks: Infinity }),
+    new CopyWebpackPlugin([
+      { from: 'src/index.html', to: '.' },
+      { from: 'src/app/assets', to: './app/assets' },
+    ])
   ],
 
   module: {

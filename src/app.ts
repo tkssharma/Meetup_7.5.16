@@ -8,7 +8,6 @@ import {FIREBASE_PROVIDERS, defaultFirebase, AngularFire, firebaseAuthConfig, Au
 import {SeedApp} from './app/seed-app';
 import * as AngularFire2 from 'angularfire2';
 
-
 bootstrap(SeedApp, [
     FIREBASE_PROVIDERS,
     defaultFirebase('https://meetup07052016.firebaseio.com'),
@@ -21,5 +20,4 @@ bootstrap(SeedApp, [
         scope: ['email']
     }),
     provide(LocationStrategy, { useClass: HashLocationStrategy })
-])
-    .catch(err => console.error(err));
+]).catch(err => console.error(err));

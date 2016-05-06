@@ -1,13 +1,12 @@
 var webpack = require('webpack');
 var path = require('path');
 
-
 // Webpack Config
 var webpackConfig = {
   entry: {
     'polyfills': './src/polyfills.ts',
-    'vendor':    './src/vendor.ts',
-    'app':       './src/app.ts',
+    'vendor': './src/vendor.ts',
+    'app': './src/app.ts',
   },
 
   output: {
@@ -22,27 +21,10 @@ var webpackConfig = {
     loaders: [
       // .ts files for TypeScript
       { test: /\.ts$/, loader: 'awesome-typescript-loader' },
-
     ]
   }
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Our Webpack Defaults
 var defaultConfig = {
@@ -74,7 +56,7 @@ var defaultConfig = {
   },
 
   resolve: {
-    root: [ path.join(__dirname, 'src') ],
+    root: [path.join(__dirname, 'src')],
     extensions: ['', '.ts', '.js']
   },
 

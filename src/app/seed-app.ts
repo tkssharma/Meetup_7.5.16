@@ -10,15 +10,13 @@ import {ChatWindow} from './components/chat-window/chat-window';
   templateUrl: 'app/seed-app.html',
 })
 @RouteConfig([
-    {
-        path: '/chat',       
-        component: ChatWindow,        
-        name: 'ChatWindow', 
-        useAsDefault: true 
-    }
+  {
+    path: '/chat',
+    component: ChatWindow,
+    name: 'ChatWindow',
+    useAsDefault: true
+  }
 ])
 export class SeedApp {
-
-  constructor() {}
-
+  constructor() { }
 }

@@ -77,6 +77,7 @@ body {
 .messages .message.left .text_wrapper {
   background-color: #ffe6cb;
   margin-left: 20px;
+  word-wrap: break-word;
 }
 .messages .message.left .text_wrapper::after, .messages .message.left .text_wrapper::before {
   right: 100%;
@@ -93,6 +94,7 @@ body {
   background-color: #c7eafc;
   margin-right: 20px;
   float: right;
+  word-wrap: break-word;
 }
 .messages .message.right .text_wrapper::after, .messages .message.right .text_wrapper::before {
   left: 100%;
